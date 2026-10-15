@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}部门协同工作台{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{% url 'dashboard' %}">部门协同工作台</a>
+  {% if user.is_authenticated %}
+  <div class="user-actions">
+    <span>当前用户：{{ user.username }}</span>
+    {% if user.is_staff %}<a href="{% url 'admin:index' %}">后台管理</a>{% endif %}
+    <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">退出登录</button></form>
+  </div>
+  {% endif %}
+</header>
+<main class="container">
+  {% if messages %}
+    {% for message in messages %}<p class="notice">{{ message }}</p>{% endfor %}
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+<footer>内部使用 · 开发启动工程 · 此页面未包含实际业务数据</footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}工作首页 · 部门协同工作台{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>工作首页</h1><p class="muted">当前角色：{{ role_name }}。以下业务模块为开发占位，并非已上线功能。</p></div><span class="pill">V0.0 启动骨架</span></div>
+<div class="grid">
+  <article class="panel"><h2>市场业务</h2><p>客户、询盘、商机、售前支持</p><span class="status">待 Codex 开发</span></article>
+  <article class="panel"><h2>统一需求</h2><p>技术评估、需求池、审批与关联</p><span class="status">待 Codex 开发</span></article>
+  <article class="panel"><h2>研发项目</h2><p>产品版本、定制项目、里程碑</p><span class="status">待 Codex 开发</span></article>
+  <article class="panel"><h2>团队任务</h2><p>负责人、优先级、截止日期、状态</p><span class="status">待 Codex 开发</span></article>
+  <article class="panel"><h2>管理驾驶舱</h2><p>市场统计、进度、超期与风险</p><span class="status">待 Codex 开发</span></article>
+  <article class="panel"><h2>AI 工作流</h2><p>Dify 询盘整理、需求分析与项目摘要</p><span class="status">后续迭代</span></article>
+</div>
+<section class="panel"><h2>下一步</h2><p>从 <code>docs/START_HERE.md</code> 开始，按 <code>tasks/</code> 中的任务依次交给 Codex 实施。管理后台是开发和基础数据维护入口，不是正式业务界面。</p></section>
+{% endblock %}

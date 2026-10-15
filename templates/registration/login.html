@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}登录 · 部门协同工作台{% endblock %}
+{% block content %}
+<section class="panel login-panel">
+  <h1>账号登录</h1>
+  <p class="muted">仅供部门内部授权人员使用。</p>
+  {% if form.errors %}<p role="alert" class="error">账号或密码不正确，请重试。</p>{% endif %}
+  <form method="post">{% csrf_token %}
+    <label for="id_username">用户名</label>
+    <input id="id_username" name="username" autocomplete="username" required autofocus>
+    <label for="id_password">密码</label>
+    <input id="id_password" name="password" type="password" autocomplete="current-password" required>
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="primary">登录</button>
+  </form>
+</section>
+{% endblock %}

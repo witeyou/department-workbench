@@ -1,0 +1,18 @@
+image: python:3.12-slim
+stages: [quality, test]
+before_script:
+  - pip install --no-cache-dir uv
+  - uv sync --dev
+lint:
+  stage: quality
+  script:
+    - uv run ruff check .
+    - uv run python manage.py check
+test:
+  stage: test
+  variables:
+    DJANGO_DEBUG: "true"
+    DATABASE_URL: "sqlite:///db.sqlite3"
+  script:
+    - uv run pytest -q
+    - uv run python manage.py makemigrations --check --dry-run
